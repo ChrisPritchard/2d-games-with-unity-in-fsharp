@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- <Reference Include="Assembly-CSharp">
+        <HintPath>..\Library\ScriptAssemblies\Assembly-CSharp.dll</HintPath>
+    </Reference> -->
+    <Reference Include="UnityEngine">
+        <HintPath>C:\Program Files\Unity\Hub\Editor\2019.2.17f1\Editor\Data\Managed\UnityEngine.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="MovementController.fs" />
+  </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="copy $(OutDir)$(TargetName).dll $(OutDir)..\Assets/ /Y" />
+    <!-- <Exec Command="copy $(OutDir)$(TargetName).pdb $(OutDir)..\..\..\..\build\$(TargetName).pdb /Y" /> -->
+  </Target>
+
+</Project>
