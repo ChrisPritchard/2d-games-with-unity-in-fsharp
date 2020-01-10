@@ -6,7 +6,7 @@ Why? I just prefer the syntax of F#, and its fully compatible with the rest of t
 
 ## F# in Unity
 
-It's pretty straightforward.
+It's pretty straightforward. I worked with [this article by Jackson Dunstan](https://jacksondunstan.com/articles/5058) to figure it out, kudos to him.
 
 - The process is to have a netstandard library you build outside of your unity project, which has a nice post build action to copy the dll inside the project.
 
@@ -16,7 +16,13 @@ It's pretty straightforward.
 
 After that, in Unity you will see your dll wherever you copied it, with a little arrow that allows you to access the scripts inside. Works like a charm.
 
-If you want the 'I update scripts and they get auto-rebuilt by Unity' experience you could always `dotnet watch build` on the separate project, which would have the same effect.
+Further Notes:
+
+- If you want the 'I update scripts and they get auto-rebuilt by Unity' experience you could always `dotnet watch build` on the separate project, which would have the same effect.
+
+- C# scripts by default are compiled into a single 'Assembly-CSharp.dll' that is located under the project Library folder. Referencing that dll allows the F# scripts to call any C# scripts you might have added.
+
+- I need to figure out a nice way to reference the core Unity dlls rather than referencing the install directory (which is version and os and...me...specific). Its only needed for the build, but its still annoying. Maybe a lib folder?
 
 ## Book Link
 
