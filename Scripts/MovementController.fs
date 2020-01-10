@@ -2,11 +2,15 @@
 
 open UnityEngine
 
-type MovementController() = 
-    inherit MonoBehaviour()
+type MovementController = 
+    inherit MonoBehaviour
 
-    // Start is called before the first frame update
-    member _.Start() = Debug.Log("F# Started with watch and msbuild copy")
+    val mutable movementSpeed : float32
 
-    // Update is called once per frame
-    member _.Update() = ()
+    new() = {
+        movementSpeed = float32 3.
+    }
+
+    member this.Start() = 
+        let message = System.String.Format ("F# Movement Speed: {0}", this.movementSpeed)
+        Debug.Log message
