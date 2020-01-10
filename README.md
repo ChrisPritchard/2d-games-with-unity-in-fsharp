@@ -2,7 +2,7 @@
 
 My work through the 2D games with unity book by Apress, but using F# instead of C#.
 
-Why? I just prefer the syntax of F#, and its fully compatible with the rest of the .NET runtime. Any functional advantages of F# over C# in the Unity space are probably minimal due to the nature of how Unity code works.
+Why? I just prefer the syntax of F#, and its fully compatible with the rest of the .NET runtime. Any functional advantages of F# over C# in the Unity space are a bonus, though most unity code is imperative/mutable/class-based which you just have to accept. F# can do all that pretty easily (public fields on classes are a bit ugly, but I can live with it).
 
 ## F# in Unity
 
@@ -18,13 +18,13 @@ After that, in Unity you will see your dll wherever you copied it, with a little
 
 Further Notes:
 
-- If you want the 'I update scripts and they get auto-rebuilt by Unity' experience you could always `dotnet watch build` on the separate project, which would have the same effect.
+- If you want the 'I update scripts and they get auto-rebuilt by Unity' experience you could always `dotnet watch build` on the separate project, which would have the same effect. I did this during development and its very seamless.
 
 - C# scripts by default are compiled into a single 'Assembly-CSharp.dll' that is located under the project Library folder. Referencing that dll allows the F# scripts to call any C# scripts you might have added.
 
 - I need to figure out a nice way to reference the core Unity dlls rather than referencing the install directory (which is version and os and...me...specific). Its only needed for the build, but its still annoying. Maybe a lib folder?
 
-## Book Link
+## Book Links
 
 I bought it via Amazon: [Amazon Link](https://www.amazon.com/Developing-Games-Unity-Independent-Programming/dp/1484237714/ref=sr_1_1).
 
