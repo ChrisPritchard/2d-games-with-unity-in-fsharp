@@ -32,4 +32,4 @@ The official page is here: [Apress Link](https://www.apress.com/gp/book/97814842
 
 ## Licenses
 
-All assets in this repo are taken from the [original repository](https://github.com/Apress/Devel-2D-Games-Unity) where they are licensed CC.
+All assets in this repo are taken from the [book GitHub repository](https://github.com/Apress/Devel-2D-Games-Unity), where they are licensed CC.
