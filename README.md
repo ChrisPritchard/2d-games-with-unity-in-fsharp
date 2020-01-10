@@ -8,10 +8,15 @@ Why? I just prefer the syntax of F#, and its fully compatible with the rest of t
 
 It's pretty straightforward.
 
-- The process is to have a netstandard library you build outside of your unity project, which has a nice post build action to copy the dll inside the project. - All your netstandard F# library needs is a reference to whatever Unity dll your using, e.g. UnityEngine to get access to MonoBehaviour (these can be found under the managed folder in your unity install).
+- The process is to have a netstandard library you build outside of your unity project, which has a nice post build action to copy the dll inside the project.
+
+- All your netstandard F# library needs is a reference to whatever Unity dll your using, e.g. UnityEngine to get access to MonoBehaviour (these can be found under the managed folder in your unity install).
+
 - Finally, the FSharp.Core.dll needs to be adjacent to where you copy the dll. An easy way to get this is to publish your project once and grab the Core dll from the output, copying it over manually to unity.
 
 After that, in Unity you will see your dll wherever you copied it, with a little arrow that allows you to access the scripts inside. Works like a charm.
+
+If you want the 'I update scripts and they get auto-rebuilt by Unity' experience you could always `dotnet watch build` on the separate project, which would have the same effect.
 
 ## Book Link
 
