@@ -10,7 +10,9 @@ It's pretty straightforward. I worked with [this article by Jackson Dunstan](htt
 
 - The process is to have a netstandard library you build outside of your unity project, which has a nice post build action to copy the dll inside the project.
 
-- All your netstandard F# library needs is a reference to whatever Unity dll your using, e.g. UnityEngine to get access to MonoBehaviour (these can be found under the managed folder in your unity install).
+- All your netstandard F# library needs is a reference to whatever Unity dll you're using, e.g. UnityEngine to get access to MonoBehaviour (these can be found under the managed folder in your unity install).
+
+  - Depending on your tolerance, it might be easier to add every dll under managed/unityengine. Particularly when using packages like cinemachine, in order to avoid the same type and namespace coming from difference assemblies.
 
 - Finally, the FSharp.Core.dll needs to be adjacent to where you copy the dll. An easy way to get this is to publish your project once and grab the Core dll from the output, copying it over manually to unity.
 
