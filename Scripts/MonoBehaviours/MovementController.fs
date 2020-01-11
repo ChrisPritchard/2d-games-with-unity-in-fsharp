@@ -30,9 +30,9 @@ type MovementController() as this =
         
         rb2d.velocity <- movement * this.movementSpeed
 
-    member __.Start() = 
-        rb2d <- __.GetComponent<Rigidbody2D>()
-        animator <- __.GetComponent<Animator>()
+    member this.Start() = 
+        rb2d <- this.GetComponent<Rigidbody2D>()
+        animator <- this.GetComponent<Animator>()
 
     member _.Update() =
         updateState ()

@@ -13,11 +13,11 @@ type HealthBar() =
     [<DefaultValue>]val mutable hpText : Text
     [<DefaultValue>]val mutable maxHitPoints : float32
 
-    member __.Start () =
-        if not (isNull __.character) then
-            __.maxHitPoints <- __.character.maxHitPoints
+    member this.Start () =
+        if not (isNull this.character) then
+            this.maxHitPoints <- this.character.maxHitPoints
 
-    member __.Update () =
-        if not (isNull __.character) then
-            __.meterImage.fillAmount <- __.hitPoints.value / __.maxHitPoints
-            __.hpText.text <- "HP: " + string (__.meterImage.fillAmount * 100.f)
+    member this.Update () =
+        if not (isNull this.character) then
+            this.meterImage.fillAmount <- this.hitPoints.value / this.maxHitPoints
+            this.hpText.text <- "HP: " + string (this.meterImage.fillAmount * 100.f)
