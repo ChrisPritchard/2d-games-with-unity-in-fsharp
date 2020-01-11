@@ -1,4 +1,4 @@
-﻿namespace HalpernRPG
+﻿namespace HalpernRPG.MonoBehaviours
 
 open UnityEngine
 
