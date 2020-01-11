@@ -218,6 +218,7 @@
     <Compile Include="MonoBehaviours/Slot.fs" />
     <Compile Include="MonoBehaviours/Inventory.fs" />
     <Compile Include="MonoBehaviours/Player.fs" />
+    <Compile Include="Managers\RPGGameManager.fs" />
     <Compile Include="RoundCameraPos.fs" />
   </ItemGroup>
 
