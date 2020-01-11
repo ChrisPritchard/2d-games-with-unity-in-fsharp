@@ -7,4 +7,7 @@ type Player() =
 
     member __.OnTriggerEnter2D (collision: Collider2D) =
         if collision.gameObject.CompareTag "CanBePickedUp" then
-            collision.gameObject.SetActive false
+            let hitObject = collision.gameObject.GetComponent<Consumable>().item
+            if not (isNull hitObject) then
+                Debug.Log ("it: " + hitObject.objectName)
+                collision.gameObject.SetActive false

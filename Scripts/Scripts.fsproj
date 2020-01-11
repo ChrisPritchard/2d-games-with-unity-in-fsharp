@@ -206,10 +206,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="RoundCameraPos.fs" />
+    <Compile Include="ScriptableObjects/Item.fs" />
+    <Compile Include="MonoBehaviours/Consumable.fs" />
     <Compile Include="MonoBehaviours/MovementController.fs" />
     <Compile Include="MonoBehaviours/Character.fs" />
     <Compile Include="MonoBehaviours/Player.fs" />
+    <Compile Include="RoundCameraPos.fs" />
   </ItemGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
