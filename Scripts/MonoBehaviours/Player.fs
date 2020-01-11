@@ -7,8 +7,14 @@ type Player() as this =
     inherit Character()
 
     let adjustHitPoints amount =
-        this.hitPoints <- max 0 (min (this.hitPoints + amount) this.maxHitPoints)
-        Debug.Log (System.String.Format("added {0}. new hitpoints is {1}", amount, this.hitPoints))
+        let newValue = max 0.f (min (this.hitPoints.value + float32 amount) this.maxHitPoints)
+        if newValue = this.hitPoints.value then false
+        else
+            this.hitPoints.value <- newValue
+            true
+
+    member __.Start () =
+        __.hitPoints.value <- __.startingHitPoints
 
     member __.OnTriggerEnter2D (collision: Collider2D) =
         if collision.gameObject.CompareTag "CanBePickedUp" then
@@ -16,8 +22,10 @@ type Player() as this =
             if not (isNull hitObject) then
                 Debug.Log ("it: " + hitObject.objectName)
 
-                match hitObject.itemType with
-                | ItemType.HEALTH ->
-                    adjustHitPoints hitObject.quantity
-                | _ -> ()
-                collision.gameObject.SetActive false
+                let removeOther =
+                    match hitObject.itemType with
+                    | ItemType.HEALTH ->
+                        adjustHitPoints hitObject.quantity
+                    | _ -> true
+                if removeOther then
+                    collision.gameObject.SetActive false

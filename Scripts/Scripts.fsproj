@@ -207,6 +207,7 @@
 
   <ItemGroup>
     <Compile Include="ScriptableObjects/Item.fs" />
+    <Compile Include="ScriptableObjects/HitPoints.fs" />
     <Compile Include="MonoBehaviours/Consumable.fs" />
     <Compile Include="MonoBehaviours/MovementController.fs" />
     <Compile Include="MonoBehaviours/Character.fs" />
