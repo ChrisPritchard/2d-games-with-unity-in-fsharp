@@ -5,7 +5,7 @@ open HalpernRPG.ScriptableObjects
 
 type Player() as this = 
     inherit Character()
-
+    
     let adjustHitPoints amount =
         let newValue = max 0.f (min (this.hitPoints.value + float32 amount) this.maxHitPoints)
         if newValue = this.hitPoints.value then false

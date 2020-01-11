@@ -177,5 +177,6 @@ MonoBehaviour:
   m_Script: {fileID: 535280158, guid: 4c6418a298f8b6e4ba25d9d94d612cbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitPoints: 5
+  startingHitPoints: 5
+  hitPoints: {fileID: 11400000, guid: f5d5eeaf905c7c641838aac84bb5dbbd, type: 2}
   maxHitPoints: 10
