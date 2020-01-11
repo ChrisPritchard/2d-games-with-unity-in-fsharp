@@ -215,6 +215,7 @@
     <Compile Include="MonoBehaviours/MovementController.fs" />
     <Compile Include="MonoBehaviours/Character.fs" />
     <Compile Include="MonoBehaviours/HealthBar.fs" />
+    <Compile Include="MonoBehaviours/Slot.fs" />
     <Compile Include="MonoBehaviours/Player.fs" />
     <Compile Include="RoundCameraPos.fs" />
   </ItemGroup>
