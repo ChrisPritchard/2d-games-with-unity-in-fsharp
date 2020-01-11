@@ -1,14 +1,22 @@
 ﻿namespace HalpernRPG.Managers
 
 open UnityEngine
+open HalpernRPG.MonoBehaviours
 
 [<AllowNullLiteral>]
-type RPGGameManager() =
+type RPGGameManager() as this =
     inherit MonoBehaviour()
+
+    [<DefaultValue>]val mutable playerSpawnPoint : SpawnPoint
 
     static let mutable sharedInstance = Unchecked.defaultof<_>
 
-    let setupScene () = ()
+    let spawnPlayer () =
+        if not (isNull this.playerSpawnPoint) then
+            this.playerSpawnPoint.SpawnObject () |> ignore
+
+    let setupScene () =
+        spawnPlayer ()
 
     member this.Awake () =
         if sharedInstance <> this && not (isNull sharedInstance) then
