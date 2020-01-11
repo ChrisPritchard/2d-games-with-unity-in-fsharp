@@ -6,7 +6,7 @@ open UnityEngine
 type Character() = 
     inherit MonoBehaviour()
 
-    [<DefaultValue>]val mutable hitPoints : float32
-    [<DefaultValue>]val mutable maxHitPoints : float32
+    [<DefaultValue>]val mutable hitPoints : int
+    [<DefaultValue>]val mutable maxHitPoints : int
 
         
