@@ -183,3 +183,6 @@ MonoBehaviour:
   healthBarPrefab: {fileID: -8205581270920297155, guid: 90955a5ffd8e53749ba4a488107da789,
     type: 3}
   healthBar: {fileID: 0}
+  inventoryPrefab: {fileID: 6028277546200444438, guid: fb3d2fa45824dac4cbf42f7c769f0d23,
+    type: 3}
+  inventory: {fileID: 0}
