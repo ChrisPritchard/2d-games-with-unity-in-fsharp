@@ -7,13 +7,15 @@ open HalpernRPG.MonoBehaviours
 type RPGGameManager() as this =
     inherit MonoBehaviour()
 
+    [<DefaultValue>]val mutable cameraManager : RPGCameraManager
     [<DefaultValue>]val mutable playerSpawnPoint : SpawnPoint
 
     static let mutable sharedInstance = Unchecked.defaultof<_>
 
     let spawnPlayer () =
         if not (isNull this.playerSpawnPoint) then
-            this.playerSpawnPoint.SpawnObject () |> ignore
+            let player = this.playerSpawnPoint.SpawnObject ()
+            this.cameraManager.virtualCamera.Follow <- player.transform
 
     let setupScene () =
         spawnPlayer ()

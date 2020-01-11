@@ -18,3 +18,4 @@ type SpawnPoint() =
             null
         else
             MonoBehaviour.Instantiate (this.prefabToSpawn, this.transform.position, Quaternion.identity)
+            :?> GameObject
