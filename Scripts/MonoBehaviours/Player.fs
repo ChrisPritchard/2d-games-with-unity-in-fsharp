@@ -5,6 +5,9 @@ open HalpernRPG.ScriptableObjects
 
 type Player() as this = 
     inherit Character()
+
+    [<DefaultValue>]val mutable healthBarPrefab : HealthBar
+    [<DefaultValue>]val mutable healthBar : HealthBar
     
     let adjustHitPoints amount =
         let newValue = max 0.f (min (this.hitPoints.value + float32 amount) this.maxHitPoints)
@@ -13,8 +16,10 @@ type Player() as this =
             this.hitPoints.value <- newValue
             true
 
-    member __.Start () =
-        __.hitPoints.value <- __.startingHitPoints
+    member this.Start () =
+        this.hitPoints.value <- this.startingHitPoints
+        this.healthBar <- MonoBehaviour.Instantiate (this.healthBarPrefab) :?> HealthBar
+        this.healthBar.character <- this
 
     member __.OnTriggerEnter2D (collision: Collider2D) =
         if collision.gameObject.CompareTag "CanBePickedUp" then

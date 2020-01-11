@@ -203,6 +203,9 @@
     <Reference Include="UnityEngine.XRModule">
       <HintPath>..\..\..\Program Files\Unity\Hub\Editor\2019.2.17f1\Editor\Data\Managed\UnityEngine\UnityEngine.XRModule.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>..\Halpern-RPG\Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
   <ItemGroup>
@@ -211,6 +214,7 @@
     <Compile Include="MonoBehaviours/Consumable.fs" />
     <Compile Include="MonoBehaviours/MovementController.fs" />
     <Compile Include="MonoBehaviours/Character.fs" />
+    <Compile Include="MonoBehaviours/HealthBar.fs" />
     <Compile Include="MonoBehaviours/Player.fs" />
     <Compile Include="RoundCameraPos.fs" />
   </ItemGroup>

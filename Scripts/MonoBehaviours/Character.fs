@@ -4,6 +4,7 @@ open UnityEngine
 open HalpernRPG.ScriptableObjects
 
 [<AbstractClass>]
+[<AllowNullLiteral>]
 type Character() = 
     inherit MonoBehaviour()
 

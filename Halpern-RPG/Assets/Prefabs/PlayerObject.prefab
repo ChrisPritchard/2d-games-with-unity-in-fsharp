@@ -180,3 +180,6 @@ MonoBehaviour:
   startingHitPoints: 5
   hitPoints: {fileID: 11400000, guid: f5d5eeaf905c7c641838aac84bb5dbbd, type: 2}
   maxHitPoints: 10
+  healthBarPrefab: {fileID: -8205581270920297155, guid: 90955a5ffd8e53749ba4a488107da789,
+    type: 3}
+  healthBar: {fileID: 0}
