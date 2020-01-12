@@ -28,3 +28,6 @@ type RPGGameManager() as this =
 
     member _.Start () =
         setupScene ()
+
+    member _.Update () =
+        if Input.GetKey "escape" then Application.Quit ()
