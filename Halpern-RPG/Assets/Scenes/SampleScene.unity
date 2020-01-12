@@ -3401,7 +3401,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingHitPoints: 2
-  hitPoints: {fileID: 0}
   maxHitPoints: 2
   hitPoints: 0
   damageStrength: 1

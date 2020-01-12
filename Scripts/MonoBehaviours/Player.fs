@@ -8,11 +8,11 @@ type Player() as this =
     inherit Character()
 
     [<DefaultValue>]val mutable hitPoints : HitPoints
-
     [<DefaultValue>]val mutable healthBarPrefab : HealthBar
-    [<DefaultValue>]val mutable healthBar : HealthBar
     [<DefaultValue>]val mutable inventoryPrefab : Inventory
-    [<DefaultValue>]val mutable inventory : Inventory
+
+    let mutable healthBar = Unchecked.defaultof<HealthBar>
+    let mutable inventory = Unchecked.defaultof<Inventory>
     
     let adjustHitPoints amount =
         let newValue = max 0.f (min (this.hitPoints.value + amount) this.maxHitPoints)
@@ -24,7 +24,7 @@ type Player() as this =
     member this.OnEnable () =
         this.ResetCharacter ()
 
-    member this.OnTriggerEnter2D (collision: Collider2D) =
+    member _.OnTriggerEnter2D (collision: Collider2D) =
         if collision.gameObject.CompareTag "CanBePickedUp" then
             let hitObject = collision.gameObject.GetComponent<Consumable>().item
             if not (isNull hitObject) then
@@ -35,22 +35,22 @@ type Player() as this =
                     | ItemType.HEALTH ->
                         adjustHitPoints (float32 hitObject.quantity)
                     | ItemType.COIN -> 
-                        this.inventory.AddItem hitObject
+                        inventory.AddItem hitObject
                     | _ -> 
                         false
                 if removeOther then
                     collision.gameObject.SetActive false
 
     override this.ResetCharacter () =
-        this.healthBar <- MonoBehaviour.Instantiate (this.healthBarPrefab) :?> HealthBar
-        this.inventory <- MonoBehaviour.Instantiate (this.inventoryPrefab) :?> Inventory
-        this.healthBar.character <- this
+        healthBar <- MonoBehaviour.Instantiate (this.healthBarPrefab) :?> HealthBar
+        inventory <- MonoBehaviour.Instantiate (this.inventoryPrefab) :?> Inventory
+        healthBar.character <- this
         this.hitPoints.value <- this.startingHitPoints
 
-    override this.KillCharacter () =
+    override _.KillCharacter () =
         base.KillCharacter ()
-        MonoBehaviour.Destroy this.healthBar.gameObject
-        MonoBehaviour.Destroy this.inventory.gameObject
+        MonoBehaviour.Destroy healthBar.gameObject
+        MonoBehaviour.Destroy inventory.gameObject
 
     override this.DamageCharacter damage interval = 
         seq {

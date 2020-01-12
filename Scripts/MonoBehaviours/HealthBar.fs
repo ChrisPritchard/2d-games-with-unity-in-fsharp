@@ -11,13 +11,14 @@ type HealthBar() =
     [<DefaultValue>][<HideInInspector>]val mutable character : Character
     [<DefaultValue>]val mutable meterImage : Image
     [<DefaultValue>]val mutable hpText : Text
-    [<DefaultValue>]val mutable maxHitPoints : float32
+    
+    let mutable maxHitPoints = 0.f
 
     member this.Start () =
         if not (isNull this.character) then
-            this.maxHitPoints <- this.character.maxHitPoints
+            maxHitPoints <- this.character.maxHitPoints
 
     member this.Update () =
         if not (isNull this.character) then
-            this.meterImage.fillAmount <- this.hitPoints.value / this.maxHitPoints
+            this.meterImage.fillAmount <- this.hitPoints.value / maxHitPoints
             this.hpText.text <- "HP: " + string (this.meterImage.fillAmount * 100.f)

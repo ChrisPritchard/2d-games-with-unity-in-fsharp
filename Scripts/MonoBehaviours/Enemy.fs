@@ -8,9 +8,9 @@ type Enemy() =
     inherit Character()
 
     [<DefaultValue>]val mutable hitPoints : float32
-
     [<DefaultValue>]val mutable damageStrength : float32
-    [<DefaultValue>]val mutable damageCoroutine : Coroutine
+    
+    let mutable damageCoroutine = Unchecked.defaultof<_>
 
     override this.ResetCharacter () =
         this.hitPoints <- this.startingHitPoints
@@ -33,11 +33,11 @@ type Enemy() =
         this.ResetCharacter ()
 
     member this.OnCollisionEnter2D (collision: Collision2D) =
-        if collision.gameObject.CompareTag "Player" && isNull this.damageCoroutine then
+        if collision.gameObject.CompareTag "Player" && isNull damageCoroutine then
             let player = collision.gameObject.GetComponent<Player> ()
-            this.damageCoroutine <- this.StartCoroutine (player.DamageCharacter this.damageStrength 1.f)
+            damageCoroutine <- this.StartCoroutine (player.DamageCharacter this.damageStrength 1.f)
 
     member this.OnCollisionExit2D (collision: Collision2D) =
-        if collision.gameObject.CompareTag "Player" && not (isNull this.damageCoroutine) then
-            this.StopCoroutine this.damageCoroutine
-            this.damageCoroutine <- null
+        if collision.gameObject.CompareTag "Player" && not (isNull damageCoroutine) then
+            this.StopCoroutine damageCoroutine
+            damageCoroutine <- null
