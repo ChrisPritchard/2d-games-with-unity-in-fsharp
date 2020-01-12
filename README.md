@@ -1,6 +1,6 @@
 # 2D Games with Unity in F\#
 
-My work through the 2D games with unity book by Apress, but using F# instead of C#.
+My work through the 2D games with unity book by [Jared Halpern](https://jaredhalpern.com/) and Apress, but using F# instead of C#.
 
 Why? I just prefer the syntax of F#, and its fully compatible with the rest of the .NET runtime. Any functional advantages of F# over C# in the Unity space are a bonus, though most unity code is imperative/mutable/class-based which you just have to accept. F# can do all that pretty easily (public fields on classes are a bit ugly, but I can live with it).
 
@@ -31,6 +31,8 @@ Further Notes:
 I bought it via Amazon: [Amazon Link](https://www.amazon.com/Developing-Games-Unity-Independent-Programming/dp/1484237714/ref=sr_1_1).
 
 The official page is here: [Apress Link](https://www.apress.com/gp/book/9781484237717)
+
+The author's personal page is [here](https://jaredhalpern.com/) and he is on twitter [here](https://twitter.com/JaredEHalpern).
 
 ## Licenses
 
