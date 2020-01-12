@@ -70,6 +70,7 @@ type Weapon() as this =
             animator.SetBool ("isFiring", true)
             animator.SetFloat ("fireXDir", quadrantVector.x)
             animator.SetFloat ("fireYDir", quadrantVector.y)
+            Debug.Log ("x: " + string quadrantVector.x + ", y: " + string quadrantVector.y)
             isFiring <- false 
         else
             animator.SetBool ("isFiring", false)
