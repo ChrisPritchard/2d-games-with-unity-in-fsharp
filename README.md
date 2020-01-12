@@ -18,7 +18,7 @@ It's pretty straightforward. I worked with [this article by Jackson Dunstan](htt
 
 After that, in Unity you will see your dll wherever you copied it, with a little arrow that allows you to access the scripts inside. Works like a charm.
 
-## Further tip with F# in Unity
+## Further tips for F# with Unity
 
 - If you want the 'I update scripts and they get auto-rebuilt by Unity' experience you could always `dotnet watch build` on the separate project, which would have the same effect. I did this during development and its very seamless.
 
