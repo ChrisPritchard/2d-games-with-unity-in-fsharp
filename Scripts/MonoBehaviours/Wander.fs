@@ -2,6 +2,7 @@
 
 open UnityEngine
 open System.Collections
+open HalpernRPG
 
 [<RequireComponent(typeof<Rigidbody2D>)>]
 [<RequireComponent(typeof<CircleCollider2D>)>]
@@ -19,6 +20,7 @@ type Wander() as this =
 
     let mutable rb2d = Unchecked.defaultof<Rigidbody2D>
     let mutable animator = Unchecked.defaultof<Animator>
+    let mutable circleCollider = Unchecked.defaultof<CircleCollider2D>
 
     let mutable targetTransform = Unchecked.defaultof<Transform>
     let mutable endPosition = Unchecked.defaultof<Vector2>
@@ -35,12 +37,11 @@ type Wander() as this =
 
     let move () =
         let remainingDistance () = 
-            let v2position = Vector2 (this.transform.position.x, this.transform.position.y)
-            (v2position - endPosition).sqrMagnitude
+            (Vector.from3to2 this.transform.position - endPosition).sqrMagnitude
         seq {
             while remainingDistance () > 0.f do
                 if not (isNull targetTransform) then
-                    endPosition <- Vector2 (targetTransform.position.x, targetTransform.position.y)
+                    endPosition <- Vector.from3to2 targetTransform.position
                 if not (isNull rb2d) then
                     animator.SetBool ("isWalking", true)
                     let newPosition = Vector2.MoveTowards (rb2d.position, endPosition, currentSpeed * Time.deltaTime)
@@ -61,8 +62,10 @@ type Wander() as this =
 
     member this.Start () =
         animator <- this.GetComponent<Animator> ()
-        currentSpeed <- this.wanderSpeed
         rb2d <- this.GetComponent<Rigidbody2D> ()
+        circleCollider <- this.GetComponent<CircleCollider2D> ()
+
+        currentSpeed <- this.wanderSpeed
         this.StartCoroutine (wanderRoutine ())
 
     member this.OnTriggerEnter2D (collision: Collider2D) =
@@ -82,5 +85,9 @@ type Wander() as this =
             if not (isNull moveCoroutine) then
                 this.StopCoroutine moveCoroutine
             moveCoroutine <- this.StartCoroutine (move ())
-
             targetTransform <- null
+
+    member this.OnDrawGizmos () =
+        if not (isNull circleCollider) then
+            Gizmos.DrawWireSphere (this.transform.position, circleCollider.radius)
+        Gizmos.DrawLine (Vector.from2to3 rb2d.position, Vector.from2to3 endPosition)

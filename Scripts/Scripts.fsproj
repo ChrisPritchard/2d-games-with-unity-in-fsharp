@@ -209,6 +209,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Include="Vector.fs" />
     <Compile Include="ScriptableObjects/Item.fs" />
     <Compile Include="ScriptableObjects/HitPoints.fs" />
     <Compile Include="MonoBehaviours/Consumable.fs" />
