@@ -223,6 +223,8 @@
     <Compile Include="MonoBehaviours/Wander.fs" />
     <Compile Include="MonoBehaviours/Enemy.fs" />
     <Compile Include="MonoBehaviours/Ammo.fs" />
+    <Compile Include="MonoBehaviours/Arc.fs" />
+    <Compile Include="MonoBehaviours/Weapon.fs" />
     <Compile Include="Managers\RPGCameraManager.fs" />
     <Compile Include="Managers\RPGGameManager.fs" />
     <Compile Include="RoundCameraPos.fs" />
