@@ -64,3 +64,23 @@ type Wander() as this =
         currentSpeed <- this.wanderSpeed
         rb2d <- this.GetComponent<Rigidbody2D> ()
         this.StartCoroutine (wanderRoutine ())
+
+    member this.OnTriggerEnter2D (collision: Collider2D) =
+        if this.followPlayer && collision.gameObject.CompareTag "Player" then
+            currentSpeed <- this.pursuitSpeed
+            targetTransform <- collision.gameObject.transform
+
+            if not (isNull moveCoroutine) then
+                this.StopCoroutine moveCoroutine
+            moveCoroutine <- this.StartCoroutine (move ())
+
+    member this.OnTriggerExit2D (collision: Collider2D) =
+        if this.followPlayer && collision.gameObject.CompareTag "Player" then
+            animator.SetBool ("isWalking", false)
+            currentSpeed <- this.wanderSpeed
+
+            if not (isNull moveCoroutine) then
+                this.StopCoroutine moveCoroutine
+            moveCoroutine <- this.StartCoroutine (move ())
+
+            targetTransform <- null
