@@ -22,9 +22,11 @@ Further Notes:
 
 - If you want the 'I update scripts and they get auto-rebuilt by Unity' experience you could always `dotnet watch build` on the separate project, which would have the same effect. I did this during development and its very seamless.
 
-- C# scripts by default are compiled into a single 'Assembly-CSharp.dll' that is located under the project Library folder. Referencing that dll allows the F# scripts to call any C# scripts you might have added.
+- C# scripts by default are compiled into a single 'Assembly-CSharp.dll' that is located under the project Library folder. Referencing that dll should allow the F# scripts to call any C# scripts you might have added (though I didn't have any so can't confirm this).
 
-- I need to figure out a nice way to reference the core Unity dlls rather than referencing the install directory (which is version and os and...me...specific). Its only needed for the build, but its still annoying. Maybe a lib folder?
+- I need to figure out a nice way to reference the core Unity dlls rather than referencing the install directory (which is version and os and...me...specific). Its only needed for the build, but its still annoying. Maybe a lib folder? Also the unity package manager wouldn't allow me to download cinemachine (some known bug) so I cloned it from github and added from disk, which unfortunately is reflected in the package manifest. Need to fix that too.
+
+This last note means that if you clone this project, you will probably need to update the reference paths before it will compile. But even though they are a lot most are just a different unity path and the path to cinemachine.
 
 ## Book Links
 
