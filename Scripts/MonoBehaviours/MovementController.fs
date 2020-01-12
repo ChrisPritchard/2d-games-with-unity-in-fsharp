@@ -15,13 +15,10 @@ type MovementController() as this =
     let mutable animator = Unchecked.defaultof<Animator>
 
     let updateState () =
-        let setState n = animator.SetInteger ("AnimationState", n)
-
-        if movement.x > 0.f then setState 1
-        elif movement.y > 0.f then setState 2
-        elif movement.x < 0.f then setState 3
-        elif movement.y < 0.f then setState 4
-        else setState 0
+        let idle = Mathf.Approximately (movement.x, 0.f) && Mathf.Approximately (movement.y, 0.f)
+        animator.SetBool ("isWalking", not idle)
+        animator.SetFloat ("xDir", movement.x)
+        animator.SetFloat ("yDir", movement.y)
 
     let moveCharacter () =
         movement.x <- Input.GetAxisRaw "Horizontal"
