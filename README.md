@@ -18,9 +18,11 @@ It's pretty straightforward. I worked with [this article by Jackson Dunstan](htt
 
 After that, in Unity you will see your dll wherever you copied it, with a little arrow that allows you to access the scripts inside. Works like a charm.
 
-Further Notes:
+## Further tip with F# in Unity
 
 - If you want the 'I update scripts and they get auto-rebuilt by Unity' experience you could always `dotnet watch build` on the separate project, which would have the same effect. I did this during development and its very seamless.
+
+- VS Code was a good editor to use, or any editor opened at the root of the project, as it allowed me to maintain the git repo with script changes and main unity project changes. I still used full Visual Studio for adding the dll references however.
 
 - C# scripts by default are compiled into a single 'Assembly-CSharp.dll' that is located under the project Library folder. Referencing that dll should allow the F# scripts to call any C# scripts you might have added (though I didn't have any so can't confirm this).
 
