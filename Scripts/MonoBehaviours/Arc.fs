@@ -14,7 +14,10 @@ type Arc() =
 
             while percentComplete < 1.f do
                 percentComplete <- percentComplete + (Time.deltaTime / duration)
-                this.transform.position <- Vector3.Lerp (startPosition, destination, percentComplete)
+                let currentHeight = Mathf.Sin (Mathf.PI * percentComplete)
+                this.transform.position <- 
+                    Vector3.Lerp (startPosition, destination, percentComplete)
+                    + Vector3.up * currentHeight
                 yield ()
 
             this.gameObject.SetActive false
