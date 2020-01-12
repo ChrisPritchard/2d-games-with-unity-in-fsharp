@@ -56,6 +56,7 @@ type Player() as this =
         seq {
             let mutable shouldBreak = false
             while not shouldBreak do
+                this.StartCoroutine (this.FlickerCharacter ()) |> ignore
                 adjustHitPoints -damage |> ignore
                 if this.hitPoints.value <= 0.f then
                     this.KillCharacter ()

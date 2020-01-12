@@ -19,6 +19,7 @@ type Enemy() =
         seq {
             let mutable shouldBreak = false
             while not shouldBreak do
+                this.StartCoroutine (this.FlickerCharacter ()) |> ignore
                 this.hitPoints <- this.hitPoints - damage
                 if this.hitPoints <= 0.f then
                     this.KillCharacter ()
